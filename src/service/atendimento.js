@@ -51,9 +51,11 @@ class ServiceAtendimento {
     }
 
     async State(id) {
-        return await this.model.State(
-            {state: true},
-            {where: id = id}
+        return await Atendimento.findAll({
+            where: {
+                state: false
+            }
+        }
         )
     }
     

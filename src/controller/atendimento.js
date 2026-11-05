@@ -62,15 +62,14 @@ class ControllerAtendimento {
 
     async State(req, res) {
         try {
-            const id = req.params.id
-            await ServiceAtendimento.State(id)
-        }   catch (error) {
-            res.send({ message: error.message })
-
-        }
+            const atendimentos = await ServiceAtendimento.State()
+            res.send({ atendimentos })
+    } catch (error) {
+        res.send({message: error.message})
     }
 }
-     
+
+} 
 export default new ControllerAtendimento()
 
 
