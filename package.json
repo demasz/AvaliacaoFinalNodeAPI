@@ -1,0 +1,25 @@
+{
+  "name": "avaliacaofinalnodeapi",
+  "version": "1.0.0",
+  "homepage": "https://github.com/demasz/AvaliacaoFinalNodeAPI#readme",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node --watch index.js",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/demasz/AvaliacaoFinalNodeAPI.git"
+  },
+  "author": "Guilherme",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {},
+  "dependencies": {
+    "express": "^5.3.0",
+    "mysql2": "^3.24.6",
+    "pg": "^8.23.1",
+    "sequelize": "^6.37.8"
+  }
+}
