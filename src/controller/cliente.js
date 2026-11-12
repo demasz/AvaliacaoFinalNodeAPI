@@ -4,9 +4,9 @@ class ControllerCliente {
 
     async Buscar(req, res) {
         try {
-            const nomes = await ServiceCliente.Buscar()
+            const clientes = await ServiceCliente.Buscar()
 
-            res.send({ nomes })
+            res.send({ clientes })
         } catch (e) {
             res.send({ message: e.message })
         }
@@ -28,8 +28,7 @@ class ControllerCliente {
             const nome = req.body.nome
             const email = req.body.email
             const senha = req.body.senha
-            const state = req.body.state
-            await ServiceCliente.Criar(nome, email, senha, state)
+            await ServiceCliente.Criar(nome, email, senha)
 
             res.send({ message: "Criado com sucesso!" })
         } catch (error) {
@@ -43,8 +42,7 @@ class ControllerCliente {
             const nome = req.body.nome
             const email = req.body.email
             const senha = req.body.senha
-            const state = req.body.state
-            await ServiceCliente.Alterar(id, nome, email, senha, state)
+            await ServiceCliente.Alterar(id, nome, email, senha)
 
             res.send({ message: "Alterado com sucesso!" })
         } catch (error) {

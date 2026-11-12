@@ -14,26 +14,28 @@ class ServiceAtendimento {
         return Atendimento.BuscarUm(id)
     }
     
-    async Criar(dia, hora, valor) {
-        if(!dia || !hora || !valor) {
+    async Criar(dia, hora, valor, concluido) {
+        if(!dia || !hora || !valor || !concluido) {
             throw new Error("Favor informar todos os dados")
         }
         
-        await Atendimento.create({dia, hora, valor})
+        await Atendimento.create({dia, hora, valor, concluido})
     }
     
-    async Alterar(id, dia, hora, valor) {
-        if(!id || isNaN(id) || !dia || !hora || !valor) {
+    async Alterar(id, dia, hora, valor, concluido) {
+        if(!id || isNaN(id) || !dia || !hora || !valor || !concluido) {
             throw new Error("Favor informar todos os dados")
         }
         const atendimentoAlterar = await Atendimento.findByPk(id)
         if (!atendimentoAlterar) {
-            throw new Error("Cliente não encontrado")
+            throw new Error("Atendimento não encontrado")
         }
 
         atendimentoAlterar.dia = dia
         atendimentoAlterar.hora = hora
         atendimentoAlterar.valor = valor
+        atendimentoAlterar.concluido = concluido
+
 
         await atendimentoAlterar.save()
     }

@@ -1,11 +1,13 @@
 import express from 'express'
-import router from './src/router/cliente.js'
+import routerPessoa from './src/router/cliente.js'
+import routerAtendimento from './src/router/atendimento.js'
 import database from './src/config/database.js'
 
 const app = express();
 app.use(express.json())
 
-app.use("/api", router)
+app.use("/api/c", routerPessoa)
+app.use("/api/a", routerAtendimento)
 
 database.db
     .sync({force: false})

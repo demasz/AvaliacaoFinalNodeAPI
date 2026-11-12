@@ -5,7 +5,7 @@ class ControllerAtendimento {
     async Buscar(req, res) {
         try {
             const dias = await ServiceAtendimento.Buscar()
-            res.send({dias})
+            res.send({ dias })
         } catch (e) {
             res.send({message: e.message})
         }
@@ -14,9 +14,9 @@ class ControllerAtendimento {
     async BuscarUm(req, res) {
         try {
             const id = req.params.id
-            const dia = await ServiceAtendimento.BuscarUm(id)     
+            const dia = await ServiceAtendimento.findByPk(id)     
             
-            res.send({dia})
+            res.send({ dia })
         } catch (error) {
             res.send({ message: error.message})
         }
@@ -24,10 +24,11 @@ class ControllerAtendimento {
 
     async Criar(req, res) {
         try {
-            const dia = req.params.id
-            const hora = req.params.id
-            const valor = req.valor.id
-                await ServiceAtendimento.Criar(dia, hora, valor)
+            const dia = req.body.dia
+            const hora = req.body.hora
+            const valor = req.body.valor
+            const conluido = req.body.conluido
+                await ServiceAtendimento.Criar(dia, hora, valor, conluido)
                 
                 res.send({ message: "Criado com sucesso!" })
             } catch (error) {
@@ -38,10 +39,11 @@ class ControllerAtendimento {
     async Alterar(req, res) {
             try {
                 const id = req.params.id
-                const dia = req.params.id
-                const hora = req.params.id
-                const valor = req.valor.id
-                await ServiceCliente.Alterar(id, dia, hora, valor)
+                const dia = req.body.dia
+                const hora = req.body.hora
+                const valor = req.body.valor
+                const concluido = req.body.concluido
+                await ServiceCliente.Alterar(id, dia, hora, valor, concluido)
                 
                 res.send({ message: "Alterado com sucesso!" })
             } catch (error) {

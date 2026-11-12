@@ -9,15 +9,15 @@ class Atendimento {
                 autoIncrement: true
             },
             dia: {
-                type: database.db.Sequelize.INTEGER
+                type: database.db.Sequelize.BOOLEAN
             },
             hora: {
-                type: database.db.Sequelize.INTEGER
+                type: database.db.Sequelize.BOOLEAN
             },
             valor: {
-                type: database.db.Sequelize.INTEGER
+                type: database.db.Sequelize.BOOLEAN
             },
-            state: {
+            concluido: {
                 type: database.db.Sequelize.BOOLEAN,
                 allowNull: false,
                 defaultValue: false
