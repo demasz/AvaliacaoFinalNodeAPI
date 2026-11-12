@@ -8,5 +8,7 @@ router.get("/buscarUm/:id", ControllerAtendimento.BuscarUm)
 router.post("/criar", ControllerAtendimento.Criar)
 router.put("/alterar/:id", ControllerAtendimento.Alterar)
 router.delete("/deletar/:id", ControllerAtendimento.Deletar)
+router.get("/pendente", ControllerAtendimento.BuscarPendente)
+router.put("/state", ControllerAtendimento.State)
 
 export default router

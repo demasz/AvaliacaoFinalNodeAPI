@@ -52,13 +52,27 @@ class ServiceAtendimento {
         await atendimentoDelete.destroy()
     }
 
-    async State(id) {
+    async BuscarPendente() {
         return await Atendimento.findAll({
             where: {
                 state: false
             }
+        })
+    }
+
+    async State(id) {
+        if(!id || isNaN(id)) {
+            throw new Error("Favor informar todos os dados")
         }
-        )
+        const atendimentoState = await Atendimento.findByPk(id)
+        
+        if (!atendimentoState) {
+            throw new Error("Atendimento não achado")
+        }
+        atendimentoState.concluido = !atendimentoState.concluido
+            await atendimentoState.save()
+                return atendimentoState
+    
     }
     
 }
